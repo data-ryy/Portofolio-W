@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dary Aulia Fauzan - Network Engineering Student specializing in Internet Engineering Technology. Experienced in network configuration, Linux administration, and IoT development.">
+    <meta name="keywords" content="Network Engineering, Network Configuration, Linux Administration, IoT, Network Infrastructure">
+    <meta name="author" content="Dary Aulia Fauzan">
+    <meta property="og:title" content="Dary Aulia Fauzan - Network Engineering Student">
+    <meta property="og:description" content="Network Engineering Student specializing in Internet Engineering Technology">
+    <meta property="og:type" content="website">
+    <title>Dary's Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="bocchi.png">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="skip-link">Skip to main content</a>
+    
+    <!-- Network Particle Background -->
+    <div id="background">
+        <canvas id="networkCanvas"></canvas>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="logo" aria-label="Home">Dary Aulia Fauzan</a>
+        <div class="nav-links" id="navLinks" role="menubar">
+            <a href="#home" role="menuitem">Home</a>
+            <a href="#about" role="menuitem">About</a>
+            <a href="#experience" role="menuitem">Experience</a>
+            <a href="#skills" role="menuitem">Skills</a>
+            <a href="#certification" role="menuitem">Certification</a>
+            <a href="#contact" role="menuitem">Contact</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <h1>Dary Aulia Fauzan</h1>
+            <h2><span class="typing-text" id="typingText">Network Engineering Student</span></h2>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-btn">
+                    <i class="fas fa-envelope"></i>
+                    Contact Me
+                </a>
+                <a href="#about" class="cta-btn secondary">
+                    <i class="fas fa-user"></i>
+                    Learn More
+                </a>
+            </div>
+        </div>
+        
+        <div class="home-image">
+            <div class="profile-container">
+                <img src="ya.jpeg" alt="Dary Aulia Fauzan - Network Engineering Student" loading="lazy">
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-content">
+            <p class="about-text">I am a dedicated Network Engineering student specializing in Internet Engineering Technology. With hands-on experience in configuring network devices and troubleshooting connectivity issues, I'm passionate about building reliable and efficient network systems.</p>
+            
+            <p class="about-text">Currently expanding my knowledge in network infrastructure, security, and IoT technologies while developing practical skills in real-world networking environments.</p>
+            
+            <div class="education-card">
+                <h3>Politeknik Elektronika Negeri Surabaya (PENS)</h3>
+                <p>Diploma in Internet Engineering Technology (2024 - Present)</p>
+                <p>Learning to develop, manage, and secure internet infrastructure and applications. Studying network systems, cybersecurity, digital services, hardware, software, and programming logic for modern communication needs including IoT and logical programming.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-container">
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div class="exp-title">SMK Negeri 2 Kota Probolinggo</div>
+                    <div class="exp-period">2020 - 2023</div>
+                </div>
+                <div class="exp-company">Computer & Network Technology</div>
+                <div class="exp-desc">Learned computer assembly, system management, network security, hardware troubleshooting, and practical network configuration including switch/router setup, IP addressing, and subnetting.</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div class="exp-title">Field Work Practice (Internship)</div>
+                    <div class="exp-period">2022 (6 months)</div>
+                </div>
+                <div class="exp-company">PT Telkom Witel Pasuruan</div>
+                <div class="exp-desc">Maintained fiber optic networks between companies and customers, performed maintenance on OLT, ODF, ODC, ODP equipment, repaired network damage, and monitored customer internet connections hourly to prevent service disruptions.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-network-wired"></i> Network Configuration</h3>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Router & Switch Configuration</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Routing Protocols (Static, RIP, OSPF, EIGRP)</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>VLAN & Inter-VLAN Routing</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Trunking & EtherChannel</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Firewall Configuration & NAT</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-server"></i> Systems & Virtualization</h3>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Linux Administration (Ubuntu, Debian)</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Docker Containerization</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Network Troubleshooting</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Basic Network Security</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-microchip"></i> IoT & Development</h3>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>IoT Device Programming (ESP32, Arduino)</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Raspberry Pi Configuration</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Basic Python Scripting</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check"></i>
+                    <span>Network Monitoring</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certification Section - MENAMPILKAN GAMBAR ASLI -->
+    <section id="certification">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certs-container">
+            <!-- Certificate 1 - Linux Command Line -->
+            <div class="cert-card" onclick="previewCertificate('Linux Command Line', 'Udemy', 'Complete Linux Command Line course covering essential commands, file system navigation, and system administration.', 'sertif/lcl.png', 'https://drive.google.com/file/d/15PbOTdSfszPuhngQKR9_BS3zlFWeW4i5/view?usp=drive_link')">
+                <div class="cert-icon-container">
+                    <div class="cert-image-container">
+                        <img src="sertif/lcl.png" alt="Linux Command Line Certificate" loading="lazy">
+                    </div>
+                    <div class="cert-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>View Certificate</span>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Linux Command Line</h3>
+                    <div class="issuer">Udemy</div>
+                    <p>Complete Linux Command Line course covering essential commands, file system navigation, and system administration.</p>
+                </div>
+            </div>
+            
+            <!-- Certificate 2 - Virtual Machine Fundamental -->
+            <div class="cert-card" onclick="previewCertificate('Virtual Machine Fundamental', 'Aguna Course', 'Fundamental understanding of virtualization technology, VM creation, and virtual network configuration.', 'sertif/vm-fund.png', 'https://drive.google.com/file/d/1GfH9ZanC2S2BKKXAjoCz4RrVnpJEzoKY/view?usp=drive_link')">
+                <div class="cert-icon-container">
+                    <div class="cert-image-container">
+                        <img src="sertif/vm-fund.png" alt="Virtual Machine Fundamental Certificate" loading="lazy">
+                    </div>
+                    <div class="cert-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>View Certificate</span>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Virtual Machine Fundamental</h3>
+                    <div class="issuer">Aguna Course</div>
+                    <p>Fundamental understanding of virtualization technology, VM creation, and virtual network configuration.</p>
+                </div>
+            </div>
+            
+            <!-- Certificate 3 - Cisco Fundamental -->
+            <div class="cert-card" onclick="previewCertificate('Cisco Fundamental', 'ID-Networkers', 'Comprehensive networking course covering Cisco configuration and network protocols.', 'sertif/cisco-dasar.png', 'https://drive.google.com/file/d/1dH2gpsD4BMneKMKSs76OqaM0YjSgwotJ/view?usp=drive_link')">
+                <div class="cert-icon-container">
+                    <div class="cert-image-container">
+                        <img src="sertif/cisco-dasar.png" alt="Cisco Fundamental Certificate" loading="lazy">
+                    </div>
+                    <div class="cert-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>View Certificate</span>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Cisco Fundamental</h3>
+                    <div class="issuer">ID-Networkers</div>
+                    <p>Comprehensive networking course covering Cisco configuration and network protocols.</p>
+                </div>
+            </div>
+            
+            <!-- Certificate 4 - Mikrotik Fundamental -->
+            <div class="cert-card" onclick="previewCertificate('Mikrotik Fundamental', 'ID-Networkers', 'Advanced networking concepts focusing on practical implementation and network design principles.', 'sertif/mikrotik-dasar.png', 'https://drive.google.com/file/d/11-ZAj5Y5S8OP8kpYIg8RhPBcxceHhKWk/view?usp=drive_link')">
+                <div class="cert-icon-container">
+                    <div class="cert-image-container">
+                        <img src="sertif/mikrotik-dasar.png" alt="Mikrotik Fundamental Certificate" loading="lazy">
+                    </div>
+                    <div class="cert-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>View Certificate</span>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Mikrotik Fundamental</h3>
+                    <div class="issuer">ID-Networkers</div>
+                    <p>Advanced networking concepts focusing on practical implementation and network design principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact <span>Me</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <!-- Kolom 1: Contact Info -->
+                <div class="contact-column">
+                    <div class="contact-item" data-copy="daryauliafauzan08@gmail.com" tabindex="0" role="button" aria-label="Copy email address">
+                        <span class="copy-indicator">Copied!</span>
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>daryauliafauzan08@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/6289670007604" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>+6289670007604</p>
+                        </div>
+                    </a>
+                    
+                    <div class="contact-item" data-copy="+6289670007604" tabindex="0" role="button" aria-label="Copy phone number">
+                        <span class="copy-indicator">Copied!</span>
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+6289670007604</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kolom 2: Location & Jam -->
+                <div class="contact-column">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Surabaya, Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://t.me/+6289670007604" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open Telegram">
+                        <i class="fab fa-telegram"></i>
+                        <div class="contact-details">
+                            <h4>Telegram</h4>
+                            <p>+6289670007604</p>
+                        </div>
+                    </a>
+                    
+            
+                    <!-- Jam Digital dengan efek slide-up dan layout sama seperti kontak lainnya -->
+                    <div class="contact-item digital-clock">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-details">
+                            <h4>Jam Ngopi</h4>
+                            <div class="clock-container-simple">
+                                <div class="time-display-simple" id="currentTime">
+                                    <div class="time-unit-wrapper">
+                                        <div class="time-unit-simple hours">
+                                            <span class="digit current">00</span>
+                                            <span class="digit next">00</span>
+                                        </div>
+                                        <div class="time-label-simple">HOURS</div>
+                                    </div>
+                                    <span class="time-separator-simple">:</span>
+                                    <div class="time-unit-wrapper">
+                                        <div class="time-unit-simple minutes">
+                                            <span class="digit current">00</span>
+                                            <span class="digit next">00</span>
+                                        </div>
+                                        <div class="time-label-simple">MINUTES</div>
+                                    </div>
+                                    <span class="time-separator-simple">:</span>
+                                    <div class="time-unit-wrapper">
+                                        <div class="time-unit-simple seconds">
+                                            <span class="digit current">00</span>
+                                            <span class="digit next">00</span>
+                                        </div>
+                                        <div class="time-label-simple">SECONDS</div>
+                                    </div>
+                                </div>
+                                <div class="date-display-simple" id="currentDate">
+                                    Loading...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/aaaaaarrrrriiiii/" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/UniverseZ07" title="GitHub" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dary-aulia-fauzan-38a979290/" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        
+        <p class="footer-text">
+        
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 2rem;">
+            &copy; 2024 Dary Aulia Fauzan. All rights reserved.
+        </p>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
