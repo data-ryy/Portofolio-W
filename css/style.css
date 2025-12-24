@@ -1296,8 +1296,6 @@ footer .social-links a:focus {
 /* ========================================= */
 /* MOBILE RESPONSIVE STYLES - FIXED */
 /* ========================================= */
-
-/* Tablet */
 @media (max-width: 992px) {
     section {
         padding: 90px 4% 50px;
@@ -1415,7 +1413,7 @@ footer .social-links a:focus {
     }
 }
 
-/* Mobile - NAVBAR FIX (PERBAIKAN PENTING) */
+/* Mobile - NAVBAR FIX DENGAN ANIMASI HAMBURGER */
 @media (max-width: 768px) {
     section {
         padding: 80px 3% 40px;
@@ -1440,7 +1438,11 @@ footer .social-links a:focus {
         text-overflow: ellipsis;
     }
     
-    /* Hamburger button - TAMPIL DI MOBILE */
+    /* ==================== */
+    /* HAMBURGER MENU ANIMASI */
+    /* ==================== */
+    
+    /* Hamburger button dengan animasi */
     .mobile-menu-btn {
         display: flex !important;
         width: 50px !important;
@@ -1449,9 +1451,84 @@ footer .social-links a:focus {
         justify-content: center;
         font-size: 1.5rem !important;
         z-index: 1001;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        overflow: hidden;
     }
     
-    /* Nav-links di desktop - SEMBUNYIKAN DI MOBILE */
+    /* Ripple effect untuk hamburger button */
+    .mobile-menu-btn::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(0, 168, 255, 0.2) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .mobile-menu-btn:active::after {
+        opacity: 1;
+        animation: rippleClick 0.6s ease-out;
+    }
+    
+    @keyframes rippleClick {
+        0% {
+            transform: scale(0.8);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    /* Icon hamburger dengan dua layer untuk animasi */
+    .mobile-menu-btn i {
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+    }
+    
+    /* Icon X (awalnya tersembunyi) */
+    .mobile-menu-btn .fa-times {
+        position: absolute;
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.5);
+    }
+    
+    /* Ketika menu aktif - animasi hamburger ke X */
+    .mobile-menu-btn.active {
+        background: rgba(0, 168, 255, 0.1) !important;
+        transform: rotate(90deg);
+    }
+    
+    .mobile-menu-btn.active .fa-bars {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.5);
+    }
+    
+    .mobile-menu-btn.active .fa-times {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+    
+    /* Hover effect untuk hamburger */
+    .mobile-menu-btn:hover {
+        background: rgba(0, 168, 255, 0.1) !important;
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
+    }
+    
+    .mobile-menu-btn:hover i {
+        color: var(--primary) !important;
+        text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+    }
+    
+    /* ==================== */
+    /* MOBILE MENU NAV-LINKS */
+    /* ==================== */
+    
+    /* Nav-links di mobile - dengan animasi slide down */
     .nav-links {
         display: none !important;
         position: fixed;
@@ -1460,6 +1537,7 @@ footer .social-links a:focus {
         width: 100%;
         background: rgba(18, 18, 18, 0.98);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 0;
         z-index: 999;
@@ -1468,20 +1546,24 @@ footer .social-links a:focus {
         border-bottom: 1px solid rgba(0, 168, 255, 0.2);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease, padding 0.5s ease;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        opacity: 0;
+        transform: translateY(-10px);
     }
     
-    /* Ketika menu aktif - TAMPILKAN SEMUA MENU */
+    /* Ketika menu aktif - animasi slide down */
     .nav-links.active {
         display: flex !important;
-        max-height: 100vh !important; /* Biarkan setinggi konten */
-        overflow-y: auto !important; /* Scroll jika tidak muat */
+        max-height: calc(100vh - 70px) !important;
+        overflow-y: auto !important;
         padding: 1rem 0 !important;
+        opacity: 1;
+        transform: translateY(0);
     }
     
-    /* Menu items - PASTIKAN SEMUA TAMPIL */
+    /* Menu items dengan animasi fade in bertahap */
     .nav-links a {
-        padding: 0.8rem 2rem !important;
+        padding: 0.9rem 2rem !important;
         width: 100% !important;
         text-align: left !important;
         font-size: 1rem !important;
@@ -1490,23 +1572,74 @@ footer .social-links a:focus {
         text-decoration: none;
         transition: all 0.3s ease;
         border-left: 3px solid transparent;
-        margin: 0.1rem 0 !important; /* Jarak kecil antar menu */
+        margin: 0.15rem 0 !important;
         line-height: 1.4;
-        min-height: 44px !important; /* Touch-friendly height */
+        min-height: 44px !important;
         display: flex !important;
         align-items: center;
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: menuItemSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
     
+    /* Animasi untuk setiap menu item dengan delay berbeda */
+    .nav-links.active a:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.active a:nth-child(2) { animation-delay: 0.15s; }
+    .nav-links.active a:nth-child(3) { animation-delay: 0.2s; }
+    .nav-links.active a:nth-child(4) { animation-delay: 0.25s; }
+    .nav-links.active a:nth-child(5) { animation-delay: 0.3s; }
+    .nav-links.active a:nth-child(6) { animation-delay: 0.35s; }
+    
+    @keyframes menuItemSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* Hover dan active state untuk menu items */
     .nav-links a:hover,
     .nav-links a.active {
         background: rgba(0, 168, 255, 0.1) !important;
         color: var(--primary) !important;
         border-left: 3px solid var(--primary) !important;
         padding-left: 2.2rem !important;
+        transform: translateX(5px);
     }
+    
+    /* Efek click untuk menu items */
+    .nav-links a:active {
+        transform: scale(0.98) !important;
+        background: rgba(0, 168, 255, 0.2) !important;
+        transition: transform 0.1s ease;
+    }
+    
+    /* Indicator untuk menu aktif */
+    .nav-links a.active::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        background: var(--primary);
+        border-radius: 50%;
+        animation: pulseActive 2s infinite;
+    }
+    
+    @keyframes pulseActive {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    
+    /* ==================== */
+    /* SECTION STYLES LAINNYA */
+    /* ==================== */
     
     .section-title {
         font-size: 1.8rem;
@@ -1677,6 +1810,29 @@ footer .social-links a:focus {
     .nav-links.active {
         padding: 0.5rem 0 !important;
     }
+    
+    /* Animasi untuk menu items di HP kecil */
+    .nav-links a {
+        animation: menuItemSlideInSmall 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    @keyframes menuItemSlideInSmall {
+        from {
+            opacity: 0;
+            transform: translateX(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .nav-links.active a:nth-child(1) { animation-delay: 0.05s; }
+    .nav-links.active a:nth-child(2) { animation-delay: 0.1s; }
+    .nav-links.active a:nth-child(3) { animation-delay: 0.15s; }
+    .nav-links.active a:nth-child(4) { animation-delay: 0.2s; }
+    .nav-links.active a:nth-child(5) { animation-delay: 0.25s; }
+    .nav-links.active a:nth-child(6) { animation-delay: 0.3s; }
     
     .section-title {
         font-size: 1.5rem;

@@ -230,85 +230,128 @@ function createBackground() {
 }
 
 // =================== //
-// SIMPLE MOBILE MENU //
+// ANIMATED MOBILE MENU //
 // =================== //
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navLinks = document.getElementById('navLinks');
 
-// Simple toggle function
+// Toggle mobile menu dengan animasi
 function toggleMobileMenu() {
-    const isActive = navLinks.classList.toggle('active');
+    const isActive = !navLinks.classList.contains('active');
+    
+    // Toggle kelas active
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    
+    // Update aria-expanded
     mobileMenuBtn.setAttribute('aria-expanded', isActive);
     
-    // Toggle icon
-    const icon = mobileMenuBtn.querySelector('i');
-    if (icon) {
-        if (isActive) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-            mobileMenuBtn.style.transform = 'rotate(90deg)';
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-            mobileMenuBtn.style.transform = 'rotate(0deg)';
-        }
-    }
+    // Toggle body scroll
+    document.body.style.overflow = isActive ? 'hidden' : '';
     
-    triggerParticleAcceleration();
+    // Trigger particle acceleration untuk efek visual
+    if (isActive) {
+        triggerParticleAcceleration();
+        
+        // Tambahkan efek ripple
+        createRippleEffect(mobileMenuBtn);
+    }
 }
 
-// Toggle menu on hamburger click
+// Efek ripple untuk button
+function createRippleEffect(button) {
+    const ripple = document.createElement('div');
+    ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(0, 168, 255, 0.3);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    `;
+    
+    button.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
+}
+
+// Tambahkan style untuk ripple animation
+if (!document.querySelector('#ripple-style')) {
+    const style = document.createElement('style');
+    style.id = 'ripple-style';
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Event listener untuk hamburger button
 mobileMenuBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    e.preventDefault();
     toggleMobileMenu();
 });
 
-// Close menu when clicking outside
+// Close menu ketika klik di luar
 document.addEventListener('click', function(e) {
     if (navLinks.classList.contains('active') && 
         !navLinks.contains(e.target) && 
         !mobileMenuBtn.contains(e.target)) {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-        mobileMenuBtn.style.transform = 'rotate(0deg)';
+        closeMobileMenu();
     }
 });
 
-// Close menu when clicking a link
+// Close menu ketika klik link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function() {
         if (window.innerWidth <= 768) {
+            // Efek visual ketika menu item diklik
+            this.style.backgroundColor = 'rgba(0, 168, 255, 0.2)';
             setTimeout(() => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-                mobileMenuBtn.style.transform = 'rotate(0deg)';
+                this.style.backgroundColor = '';
+            }, 300);
+            
+            // Tutup menu setelah delay
+            setTimeout(() => {
+                closeMobileMenu();
             }, 300);
         }
     });
 });
 
+// Fungsi untuk close menu
+function closeMobileMenu() {
+    mobileMenuBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+}
+
 // Handle window resize
 window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         // Reset menu state on desktop
-        navLinks.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-        mobileMenuBtn.style.transform = 'rotate(0deg)';
+        closeMobileMenu();
+    }
+});
+
+// Inisialisasi: Sembunyikan menu di mobile saat load
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+        navLinks.style.display = 'none';
+        // Set display ke flex setelah sedikit delay untuk animasi
+        setTimeout(() => {
+            navLinks.style.display = 'flex';
+        }, 10);
     }
 });
 
