@@ -605,6 +605,10 @@ section.visible {
 /* =================== */
 /* CERTIFICATION SECTION */
 /* =================== */
+#certification {
+    background: rgba(10, 10, 10, 0.7);
+}
+
 .certs-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -944,10 +948,6 @@ section.visible {
 /* =================== */
 /* CONTACT SECTION - FIXED FOR MOBILE */
 /* =================== */
-#contact {
-    background: rgba(10, 10, 10, 0.7);
-}
-
 .contact-container {
     max-width: 1000px;
     width: 100%;
@@ -2017,4 +2017,27 @@ footer .social-links a:focus {
     .time-unit-simple .digit {
         font-size: 0.8rem !important;
     }
+}
+
+.anime-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.floating-anime {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.3));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
 }

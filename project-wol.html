@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project WoL - Dary's Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="bocchi.png">
+    <style>
+        .project-detail-container {
+            max-width: 1100px;
+            margin: 120px auto 60px;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-header h1 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .project-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .flow-image {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-section {
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .step-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: my-awesome-counter;
+            font-size: 1.15rem;
+        }
+
+        .step-list>li {
+            counter-increment: my-awesome-counter;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 3.5rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .step-list>li::before {
+            content: counter(my-awesome-counter);
+            color: var(--dark);
+            background: var(--primary);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+        }
+
+        .step-list strong {
+            color: var(--primary);
+        }
+
+        .step-list ul {
+            list-style-type: none;
+            margin-top: 1rem;
+            padding-left: 0;
+            font-size: 1.1rem;
+        }
+
+        .step-list ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .step-list ul li::before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+            background: rgba(0, 168, 255, 0.1);
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 168, 255, 0.2);
+            display: block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Network Particle Background -->
+    <div id="background">
+        <canvas id="networkCanvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="Home">Dary Aulia Fauzan</a>
+        <div class="nav-links" id="navLinks" role="menubar">
+            <a href="index.html#home" role="menuitem">Home</a>
+            <a href="index.html#projects" role="menuitem" class="active">Projects</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="project-detail-container">
+        <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+        <div class="project-header fade-section">
+            <h1>Remote PC Wake-on-LAN</h1>
+            <p>Remotely waking up a PC using an Orange Pi via Tailscale network, forwarding a Magic Packet to the PC.</p>
+        </div>
+
+        <img src="wakeonlan_flow.png" alt="Wake on LAN Flow" class="flow-image fade-section" loading="lazy">
+
+        <div class="step-section fade-section">
+            <h3>Orange Pi Zero 3 Gateway</h3>
+            <img src="orangepizero3.png" alt="Orange Pi Zero 3" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
+                The Orange Pi Zero 3 is an ultra-compact, high-performance single-board computer (SBC) powered by an Allwinner H618 Quad-core processor. Designed as an affordable and highly efficient mini PC, it functions much like a Raspberry Pi but in a much smaller footprint. It runs a full Linux environment, making it an excellent platform for learning networking, building IoT projects, or managing a home lab without consuming much physical space or electricity.
+            </p>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
+                In this project, the Orange Pi Zero 3 acts as the reliable, always-on gateway for the Remote Wake-on-LAN architecture. By staying permanently connected to the Mikrotik router, it bridges the gap between the external internet and the local home network. It runs Tailscale, a zero-config VPN based on WireGuard, which creates a secure tunnel allowing remote devices to communicate with the Orange Pi from anywhere in the world without requiring complex port forwarding rules.
+            </p>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; text-align: justify;">
+                Once an SSH connection to the Orange Pi is established via the Tailscale network, we can securely broadcast a Magic Packet to the target PC. A simple command or script specifies the PC's MAC address and dispatches the Wake-on-LAN signal through the local router, seamlessly powering on the computer from a cold state. Below is a snapshot of the SSH login process into the Orange Pi environment.
+            </p>
+            <img src="oranegpi-login.png" alt="Orange Pi SSH Login" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
+            
+            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Network Topology</h4>
+            <img src="topologi-wol-orangepi.jpeg" alt="Network Topology Wake on LAN" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
+
+            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Installing the Wakeonlan Package</h4>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
+                To send the Magic Packet, we need to install the <code>wakeonlan</code> package on the Orange Pi. You can easily install it using the APT package manager by running <code>sudo apt install wakeonlan</code> in the terminal. The video below demonstrates the installation process and how the command is executed to wake up the target PC.
+            </p>
+            <video src="install-wakeonlan.webm" controls class="step-image fade-section" style="margin: 2rem auto; width: 100%; max-width: 800px; display: block;" aria-label="Installing Wake-on-LAN on Orange Pi"></video>
+        </div>
+
+        <div class="step-section fade-section">
+            <h3>Enable Wake on LAN on PC (Windows)</h3>
+            <ol class="step-list">
+                <li>Open <strong>Device Manager</strong> -> <strong>Network Adapters</strong> then select the LAN driver
+                    currently in use.
+                    <img src="Device Manager.jpg" alt="Device Manager" class="step-image fade-section" loading="lazy">
+                </li>
+                <li>Go to the <strong>Advanced</strong> tab and look for <strong>"Wake on Magic Packet"</strong>, then set it
+                    to <strong>"Enabled"</strong>.
+                    <img src="advanced-wol.jpg" alt="Advanced Tab" class="step-image fade-section" loading="lazy">
+                </li>
+                <li>Go to the <strong>Power Management</strong> tab and check <strong>"Allow the computer to turn off this
+                        device to save power"</strong> as well as allow the device to wake the computer.
+                    <img src="Network-Adapter.jpg" alt="Power Management Tab" class="step-image fade-section" loading="lazy">
+                </li>
+                <li>Go to <strong>Power Options</strong> (in Control Panel), click <strong>"Choose what the power
+                        buttons do"</strong>, select <strong>"Change settings that are currently unavailable"</strong>,
+                    then disable <strong>"Turn on fast startup"</strong> and Save changes.
+                    <img src="PowerOPtion.jpg" alt="Power Options" class="step-image fade-section" loading="lazy">
+                    <img src="change settings.jpg" alt="Change Settings" class="step-image fade-section" loading="lazy">
+                    <img src="turn off fast startup.jpg" alt="Turn off fast startup" class="step-image fade-section" loading="lazy">
+                </li>
+            </ol>
+        </div>
+
+        <div class="step-section fade-section">
+            <h3>Setting Wake On LAN in PC BIOS</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">(Case study using MSI B350 Tomahawk)
+            </p>
+            <ol class="step-list">
+                <li>Go to <strong>Advanced</strong>, select <strong>"Power Management Setup"</strong>
+                    <img src="bios-advanced.jpg" alt="BIOS Advanced" class="step-image fade-section" loading="lazy">
+                    <img src="bios-advanced-powermanagementsetup.jpg" alt="Power Management Setup" class="step-image fade-section" loading="lazy">
+                    <ul>
+                        <li>Disable <strong>ErP Ready</strong>
+                            <img src="bios-advanced-powermanagementsetup-erpready.jpg" alt="Disable ErP Ready" class="step-image fade-section" loading="lazy">
+                        </li>
+                    </ul>
+                </li>
+                <li>Go to <strong>Wake Up Event Setup</strong>
+                    <img src="bios-advanced-wakeupeventsetup.jpg" alt="Wake Up Event Setup" class="step-image fade-section" loading="lazy">
+                    <ul>
+                        <li>Enable <strong>Resume by PCI/PCI-E</strong>
+                            <img src="bios-advanced-wakeupeventsetup-resumbebypci-e.jpg" alt="Enable Resume by PCI/PCI-E" class="step-image fade-section" loading="lazy">
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p
+            style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            &copy; 2026 Dary Aulia Fauzan. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeSections = document.querySelectorAll('.fade-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeSections.forEach(sec => observer.observe(sec));
+
+            setTimeout(() => {
+                fadeSections.forEach(sec => {
+                    if (sec.getBoundingClientRect().top < window.innerHeight) {
+                        sec.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
