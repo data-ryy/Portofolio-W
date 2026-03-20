@@ -199,33 +199,55 @@
 
         <div class="project-header fade-section">
             <h1>Remote PC Wake-on-LAN</h1>
-            <p>Remotely waking up a PC using an Orange Pi via Tailscale network, forwarding a Magic Packet to the PC.</p>
+            <p>Remotely waking up a PC using an Orange Pi via Tailscale network, forwarding a Magic Packet to the PC.
+            </p>
         </div>
 
         <img src="wakeonlan_flow.png" alt="Wake on LAN Flow" class="flow-image fade-section" loading="lazy">
 
         <div class="step-section fade-section">
             <h3>Orange Pi Zero 3 Gateway</h3>
-            <img src="orangepizero3.png" alt="Orange Pi Zero 3" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
+            <img src="orangepizero3.png" alt="Orange Pi Zero 3" class="step-image fade-section"
+                style="margin: 2rem auto;" loading="lazy">
             <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
-                The Orange Pi Zero 3 is an ultra-compact, high-performance single-board computer (SBC) powered by an Allwinner H618 Quad-core processor. Designed as an affordable and highly efficient mini PC, it functions much like a Raspberry Pi but in a much smaller footprint. It runs a full Linux environment, making it an excellent platform for learning networking, building IoT projects, or managing a home lab without consuming much physical space or electricity.
+                The Orange Pi Zero 3 is an ultra-compact, high-performance single-board computer (SBC) powered by an
+                Allwinner H618 Quad-core processor. Designed as an affordable and highly efficient mini PC, it functions
+                much like a Raspberry Pi but in a much smaller footprint. It runs a full Linux environment, making it an
+                excellent platform for learning networking, building IoT projects, or managing a home lab without
+                consuming much physical space or electricity.
             </p>
             <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
-                In this project, the Orange Pi Zero 3 acts as the reliable, always-on gateway for the Remote Wake-on-LAN architecture. By staying permanently connected to the Mikrotik router, it bridges the gap between the external internet and the local home network. It runs Tailscale, a zero-config VPN based on WireGuard, which creates a secure tunnel allowing remote devices to communicate with the Orange Pi from anywhere in the world without requiring complex port forwarding rules.
+                In this project, the Orange Pi Zero 3 acts as the reliable, always-on gateway for the Remote Wake-on-LAN
+                architecture. By staying permanently connected to the Mikrotik router, it bridges the gap between the
+                external internet and the local home network. It runs Tailscale, a zero-config VPN based on WireGuard,
+                which creates a secure tunnel allowing remote devices to communicate with the Orange Pi from anywhere in
+                the world without requiring complex port forwarding rules.
             </p>
             <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; text-align: justify;">
-                Once an SSH connection to the Orange Pi is established via the Tailscale network, we can securely broadcast a Magic Packet to the target PC. A simple command or script specifies the PC's MAC address and dispatches the Wake-on-LAN signal through the local router, seamlessly powering on the computer from a cold state. Below is a snapshot of the SSH login process into the Orange Pi environment.
+                Once an SSH connection to the Orange Pi is established via the Tailscale network, we can securely
+                broadcast a Magic Packet to the target PC. A simple command or script specifies the PC's MAC address and
+                dispatches the Wake-on-LAN signal through the local router, seamlessly powering on the computer from a
+                cold state. Below is a snapshot of the SSH login process into the Orange Pi environment.
             </p>
-            <img src="oranegpi-login.png" alt="Orange Pi SSH Login" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
-            
-            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Network Topology</h4>
-            <img src="topologi-wol-orangepi.jpeg" alt="Network Topology Wake on LAN" class="step-image fade-section" style="margin: 2rem auto;" loading="lazy">
+            <img src="oranegpi-login.png" alt="Orange Pi SSH Login" class="step-image fade-section"
+                style="margin: 2rem auto;" loading="lazy">
 
-            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Installing the Wakeonlan Package</h4>
+            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Network Topology
+            </h4>
+            <img src="topologi-wol-orangepi.jpeg" alt="Network Topology Wake on LAN" class="step-image fade-section"
+                style="margin: 2rem auto;" loading="lazy">
+
+            <h4 style="color: var(--text); margin-top: 3rem; margin-bottom: 1rem; font-size: 1.3rem;">Installing the
+                Wakeonlan Package</h4>
             <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; text-align: justify;">
-                To send the Magic Packet, we need to install the <code>wakeonlan</code> package on the Orange Pi. You can easily install it using the APT package manager by running <code>sudo apt install wakeonlan</code> in the terminal. The video below demonstrates the installation process and how the command is executed to wake up the target PC.
+                To send the Magic Packet, we need to install the <code>wakeonlan</code> package on the Orange Pi. You
+                can easily install it using the APT package manager by running <code>sudo apt install wakeonlan</code>
+                in the terminal. The video below demonstrates the installation process and how the command is executed
+                to wake up the target PC.
             </p>
-            <video src="install-wakeonlan.webm" controls class="step-image fade-section" style="margin: 2rem auto; width: 100%; max-width: 800px; display: block;" aria-label="Installing Wake-on-LAN on Orange Pi"></video>
+            <video src="install-wakeonlan.webm" controls class="step-image fade-section"
+                style="margin: 2rem auto; width: 100%; max-width: 800px; display: block;"
+                aria-label="Installing Wake-on-LAN on Orange Pi"></video>
         </div>
 
         <div class="step-section fade-section">
@@ -235,20 +257,24 @@
                     currently in use.
                     <img src="Device Manager.jpg" alt="Device Manager" class="step-image fade-section" loading="lazy">
                 </li>
-                <li>Go to the <strong>Advanced</strong> tab and look for <strong>"Wake on Magic Packet"</strong>, then set it
+                <li>Go to the <strong>Advanced</strong> tab and look for <strong>"Wake on Magic Packet"</strong>, then
+                    set it
                     to <strong>"Enabled"</strong>.
                     <img src="advanced-wol.jpg" alt="Advanced Tab" class="step-image fade-section" loading="lazy">
                 </li>
-                <li>Go to the <strong>Power Management</strong> tab and check <strong>"Allow the computer to turn off this
+                <li>Go to the <strong>Power Management</strong> tab and check <strong>"Allow the computer to turn off
+                        this
                         device to save power"</strong> as well as allow the device to wake the computer.
-                    <img src="Network-Adapter.jpg" alt="Power Management Tab" class="step-image fade-section" loading="lazy">
+                    <img src="Network-Adapter.jpg" alt="Power Management Tab" class="step-image fade-section"
+                        loading="lazy">
                 </li>
                 <li>Go to <strong>Power Options</strong> (in Control Panel), click <strong>"Choose what the power
                         buttons do"</strong>, select <strong>"Change settings that are currently unavailable"</strong>,
                     then disable <strong>"Turn on fast startup"</strong> and Save changes.
                     <img src="PowerOPtion.jpg" alt="Power Options" class="step-image fade-section" loading="lazy">
                     <img src="change settings.jpg" alt="Change Settings" class="step-image fade-section" loading="lazy">
-                    <img src="turn off fast startup.jpg" alt="Turn off fast startup" class="step-image fade-section" loading="lazy">
+                    <img src="turn off fast startup.jpg" alt="Turn off fast startup" class="step-image fade-section"
+                        loading="lazy">
                 </li>
             </ol>
         </div>
@@ -260,18 +286,22 @@
             <ol class="step-list">
                 <li>Go to <strong>Advanced</strong>, select <strong>"Power Management Setup"</strong>
                     <img src="bios-advanced.jpg" alt="BIOS Advanced" class="step-image fade-section" loading="lazy">
-                    <img src="bios-advanced-powermanagementsetup.jpg" alt="Power Management Setup" class="step-image fade-section" loading="lazy">
+                    <img src="bios-advanced-powermanagementsetup.jpg" alt="Power Management Setup"
+                        class="step-image fade-section" loading="lazy">
                     <ul>
                         <li>Disable <strong>ErP Ready</strong>
-                            <img src="bios-advanced-powermanagementsetup-erpready.jpg" alt="Disable ErP Ready" class="step-image fade-section" loading="lazy">
+                            <img src="bios-advanced-powermanagementsetup-erpready.jpg" alt="Disable ErP Ready"
+                                class="step-image fade-section" loading="lazy">
                         </li>
                     </ul>
                 </li>
                 <li>Go to <strong>Wake Up Event Setup</strong>
-                    <img src="bios-advanced-wakeupeventsetup.jpg" alt="Wake Up Event Setup" class="step-image fade-section" loading="lazy">
+                    <img src="bios-advanced-wakeupeventsetup.jpg" alt="Wake Up Event Setup"
+                        class="step-image fade-section" loading="lazy">
                     <ul>
                         <li>Enable <strong>Resume by PCI/PCI-E</strong>
-                            <img src="bios-advanced-wakeupeventsetup-resumbebypci-e.jpg" alt="Enable Resume by PCI/PCI-E" class="step-image fade-section" loading="lazy">
+                            <img src="bios-advanced-wakeupeventsetup-resumbebypci-e.jpg"
+                                alt="Enable Resume by PCI/PCI-E" class="step-image fade-section" loading="lazy">
                         </li>
                     </ul>
                 </li>
@@ -283,7 +313,7 @@
     <footer>
         <p
             style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
-            &copy; 2026 Dary Aulia Fauzan. All rights reserved.
+            &copy; 2024 Dary Aulia Fauzan. All rights reserved.
         </p>
     </footer>
 
