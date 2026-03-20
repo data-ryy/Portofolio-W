@@ -18,6 +18,18 @@
     --text-secondary: #b0b0b0;
     --success: #4cd137;
     --error: #e84118;
+    --section-bg: rgba(10, 10, 10, 0.7);
+    --nav-bg: rgba(18, 18, 18, 0.98);
+}
+
+body.light-mode {
+    --dark: #f0f4f8;
+    --darker: #e2e8f0;
+    --card-bg: #ffffff;
+    --text: #1a202c;
+    --text-secondary: #4a5568;
+    --section-bg: rgba(226, 232, 240, 0.85);
+    --nav-bg: rgba(255, 255, 255, 0.95);
 }
 
 body {
@@ -126,7 +138,7 @@ html {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 18, 18, 0.98);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     padding: 1.2rem 5%;
     display: flex;
@@ -136,6 +148,28 @@ html {
     border-bottom: 1px solid rgba(0, 168, 255, 0.3);
     transition: all 0.3s ease;
     min-height: 70px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1.2rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    transform: scale(1.1);
 }
 
 .navbar.scrolled {
@@ -430,7 +464,7 @@ section.visible {
 /* ABOUT SECTION */
 /* =================== */
 #about {
-    background: rgba(10, 10, 10, 0.7);
+    background: var(--section-bg);
 }
 
 .about-content {
@@ -534,7 +568,7 @@ section.visible {
 /* SKILLS SECTION */
 /* =================== */
 #skills {
-    background: rgba(10, 10, 10, 0.7);
+    background: var(--section-bg);
 }
 
 .skills-grid {
@@ -606,7 +640,7 @@ section.visible {
 /* CERTIFICATION SECTION */
 /* =================== */
 #certification {
-    background: rgba(10, 10, 10, 0.7);
+    background: var(--section-bg);
 }
 
 .certs-container {
@@ -1535,7 +1569,7 @@ footer .social-links a:focus {
         top: 70px;
         left: 0;
         width: 100%;
-        background: rgba(18, 18, 18, 0.98);
+        background: var(--nav-bg);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         flex-direction: column;

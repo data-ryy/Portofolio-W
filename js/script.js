@@ -808,6 +808,37 @@ window.addEventListener('DOMContentLoaded', () => {
     toggleScrollTop();
     handleNavbarScroll();
     
+    // Theme Toggle Logic
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggleBtns.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+        });
+    }
+
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            
+            themeToggleBtns.forEach(b => {
+                const icon = b.querySelector('i');
+                if (icon) {
+                    if (isLight) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                    } else {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                    }
+                }
+            });
+        });
+    });
+
     setTimeout(checkVisibility, 100);
 });
 
