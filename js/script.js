@@ -539,6 +539,14 @@ function handleNavbarScroll() {
 function previewCertificate(title, issuer, description, imagePath, driveLink) {
     closeCertificateModal();
     
+    const isExternalLink = driveLink && driveLink.startsWith('http');
+    const actionBtnHtml = driveLink ? `
+        <a href="${driveLink}" class="cert-modal-btn" target="_blank" rel="noopener noreferrer" aria-label="Open document">
+            <i class="fas ${isExternalLink ? 'fa-external-link-alt' : 'fa-expand'}"></i>
+            ${isExternalLink ? 'Verify' : 'Full Image'}
+        </a>
+    ` : '';
+
     const modal = document.createElement('div');
     modal.className = 'cert-modal';
     modal.innerHTML = `
@@ -549,11 +557,8 @@ function previewCertificate(title, issuer, description, imagePath, driveLink) {
                     <div class="cert-modal-issuer">${issuer}</div>
                 </div>
                 <div class="cert-modal-actions">
-                    <a href="${driveLink}" class="cert-modal-btn" target="_blank" rel="noopener noreferrer" aria-label="Verify certificate">
-                        <i class="fas fa-external-link-alt"></i>
-                        Verify
-                    </a>
-                    <button class="cert-modal-close" aria-label="Close certificate modal">
+                    ${actionBtnHtml}
+                    <button class="cert-modal-close" aria-label="Close modal">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -561,15 +566,15 @@ function previewCertificate(title, issuer, description, imagePath, driveLink) {
             <div class="cert-modal-body">
                 <div class="cert-modal-loading">
                     <i class="fas fa-spinner fa-spin"></i>
-                    <p>Loading certificate...</p>
+                    <p>Loading image...</p>
                 </div>
                 <div class="cert-modal-error" style="display: none;">
                     <i class="fas fa-exclamation-triangle"></i>
-                    <p>Unable to load certificate image.</p>
-                    <p>Please use the button above to verify.</p>
+                    <p>Unable to load image preview.</p>
+                    ${driveLink ? '<p>Please use the button above to view.</p>' : ''}
                 </div>
                 <img src="${imagePath}" 
-                     alt="${title} Certificate" 
+                     alt="${title}" 
                      class="certificate-image"
                      onload="hideCertificateLoading(this)" 
                      onerror="showCertificateError(this)"
@@ -628,15 +633,7 @@ function showCertificateError(imgElement) {
     if (error) error.style.display = 'flex';
     imgElement.style.display = 'none';
     
-    console.error(`Failed to load certificate image: ${imgElement.src}`);
-    
-    setTimeout(() => {
-        const fileName = imgElement.src.split('/').pop();
-        const altPath = `sertif/${fileName}`;
-        if (imgElement.src !== altPath) {
-            imgElement.src = altPath;
-        }
-    }, 1000);
+    console.error(`Failed to load preview image: ${imgElement.src}`);
 }
 
 function closeCertificateModal() {
